@@ -2,7 +2,7 @@
 #### Function accepts two values.
 ####        packages: a string vector with the names of the packages
 ####        load    : TRUE / FALSE 
-####        dev     : developer names
+####        dev     : developer names #Temporarily discontinued
 #### The packages mentioned in the string vector will be installed if not available.
 #### Setting load=TRUE will load the packages.
 
@@ -14,7 +14,6 @@ buildR <- function(packages,load=FALSE,dev='ramnathv'){
     if(!require(i, character.only = TRUE)){
       #  If package was not able to be loaded then re-install
       install.packages(i, dependencies = TRUE )
-      devtools::install_github(i, dev)
       
       if(load==TRUE){
         #  Load package after installing
