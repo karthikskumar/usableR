@@ -4,12 +4,12 @@
 ####        load    : TRUE / FALSE 
 ####        dev     : developer names #Temporarily discontinued
 #### The packages mentioned in the string vector will be installed if not available.
-#### Setting load=TRUE will load the packages.
+#### Setting load=FALSE will not load the package post install.
 
 #### Will install packages from github if package developer name are provided
 
 
-buildR <- function(packages,load=FALSE,dependency = FALSE){
+buildR <- function(packages,load=TRUE,dependency = FALSE){
   for(i in packages){
     #  'require' returns TRUE invisibly if it was able to load package
     
