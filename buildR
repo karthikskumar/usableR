@@ -9,11 +9,13 @@
 #### Will install packages from github if package developer name are provided
 
 
-buildR <- function(packages,load=FALSE,dev='ramnathv'){
+buildR <- function(packages,load=FALSE,dependency = FALSE){
   for(i in packages){
+    #  'require' returns TRUE invisibly if it was able to load package
+    
     if(!require(i, character.only = TRUE)){
       #  If package was not able to be loaded then re-install
-      install.packages(i, dependencies = TRUE )
+      install.packages(i, dependencies = dependency )
       
       if(load==TRUE){
         #  Load package after installing
