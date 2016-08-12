@@ -1,0 +1,25 @@
+#### This is a function to install (if not available) and load packages used in a script
+#### Function accepts two values.
+####        packages: a string vector with the names of the packages
+####        load    : TRUE / FALSE 
+####        dev     : developer names
+#### The packages mentioned in the string vector will be installed if not available.
+#### Setting load=TRUE will load the packages.
+
+#### Will install packages from github if package developer name are provided
+
+
+buildR <- function(packages,load=FALSE,dev='ramnathv'){
+  for(i in packages){
+    if(!require(i, character.only = TRUE)){
+      #  If package was not able to be loaded then re-install
+      install.packages(i, dependencies = TRUE )
+      devtools::install_github(i, dev)
+      
+      if(load==TRUE){
+        #  Load package after installing
+        require(i, character.only = TRUE )
+      }
+    }
+  }
+}
