@@ -6,7 +6,7 @@
 #### The packages mentioned in the string vector will be installed if not available.
 #### Setting load=FALSE will not load the package post install.
 
-#### Will install packages from github if package developer name are provided
+#### Will install packages from github if package developer names are provided
 
 
 buildR <- function(packages,load=TRUE,dependency = FALSE){
