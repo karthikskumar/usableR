@@ -38,7 +38,7 @@ rmd2R <- function(file){
     flIn[i] <- paste("#' ", flIn[i], sep = "")
   }
   # create an output file
-  nm <- strsplit(infile, split = "\\.")[[1]][1]
+  nm <- strsplit(file, split = "\\.")[[1]][1]
   flOut <- file(paste(nm, "[rmd2r].R", sep = ""), "w")
   for(i in 1:length(flIn)){
     cat(flIn[i], "\n", file = flOut, sep = "\t")
