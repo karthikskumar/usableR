@@ -11,9 +11,9 @@
 #' so that the interpreter can run the commands.
 #' 
 #' 
-rmd2rscript <- function(infile){
+rmd2rscript <- function(fileName){
   # read the file
-  flIn <- readLines(infile,warn=FALSE)
+  flIn <- readLines(fileName,warn=FALSE)
   # identify the start of code blocks
   cdStrt <- which(grepl(flIn, pattern = "```{r*", perl = TRUE))
   # identify the end of code blocks
