@@ -13,7 +13,7 @@
 #' 
 rmd2rscript <- function(infile){
   # read the file
-  flIn <- readLines(infile)
+  flIn <- readLines(infile,warn=FALSE)
   # identify the start of code blocks
   cdStrt <- which(grepl(flIn, pattern = "```{r*", perl = TRUE))
   # identify the end of code blocks
