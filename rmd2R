@@ -11,7 +11,7 @@
 #' so that the interpreter can run the commands.
 #' 
 #' 
-rmd2rscript <- function(file){
+rmd2R <- function(file){
   # read the file
   flIn <- readLines(file,warn=FALSE)
   # identify the start of code blocks
