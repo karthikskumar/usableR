@@ -1,26 +1,16 @@
 #### This is a function to install (if not available) and load packages used in a script
 #### Function accepts two values.
-####        packages: a string vector with the names of the packages
-####        load    : TRUE / FALSE 
-####        dev     : developer names #Temporarily discontinued
-#### The packages mentioned in the string vector will be installed if not available.
-#### Setting load=FALSE will not load the package post install.
+####        packages: name of the package to be loaded
+####        repo: the repo to use, (in the form of url)
 
-#### Will install packages from github if package developer names are provided
-
-
-buildR <- function(packages,load=TRUE,dependency = FALSE){
-  for(i in packages){
-    #  'require' returns TRUE invisibly if it was able to load package
-    
-    if(!require(i, character.only = TRUE)){
-      #  If package was not able to be loaded then re-install
-      install.packages(i, dependencies = dependency )
-      
-      if(load==TRUE){
-        #  Load package after installing
-        require(i, character.only = TRUE )
-      }
-    }
+buildR <- function(package, dependecy = T, repo = "http://cran.r-project.org"){
+  options(repos = repo)
+  package <- deparse(substitute(package))
+  suppressWarnings(status <- require(package, character.only = T))
+  
+  if(!status){
+    install.packages(package, dependencies = dependecy)
+    require(package, character.only = T)
+    message(paste0(package,' was installed before being loaded'))
   }
 }
